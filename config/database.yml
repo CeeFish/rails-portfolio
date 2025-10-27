@@ -2,23 +2,28 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
 
 development:
   <<: *default
-  database: rails_portfolio_development
+  database: my_app_development
 
 test:
   <<: *default
-  database: rails_portfolio_test
+  database: my_app_test
 
 production:
   <<: *default
-  url: <%= ENV['DATABASE_URL'] %>
+  url: <%= ENV["DATABASE_URL"] %>
 
 cable:
-    <<: *default
-    url: <%= ENV['DATABASE_URL'] %>
+  <<: *default
+  url: <%= ENV["DATABASE_URL"] %>
 
 queue:
+  <<: *default
+  url: <%= ENV["DATABASE_URL"] %>
+
+cache:
   <<: *default
   url: <%= ENV["DATABASE_URL"] %>
