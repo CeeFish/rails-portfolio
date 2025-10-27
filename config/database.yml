@@ -23,10 +23,10 @@ default: &default
 development:
   <<: *default
   database: rails_portfolio_development
-  username: <%= ENV.fetch("PGUSER", "postgres") %>
-  password: <%= ENV.fetch("PGPASSWORD", "CeetheDev") %>
-  host: <%= ENV.fetch("PGHOST", "localhost") %>
-  port: 5432
+  # username: <%= ENV.fetch("PGUSER", "postgres") %>
+  # password: <%= ENV.fetch("PGPASSWORD", "CeetheDev") %>
+  # host: <%= ENV.fetch("PGHOST", "localhost") %>
+  # port: 5432
 
   # The specified database role being used to connect to PostgreSQL.
   # To create additional roles in PostgreSQL see `$ createuser --help`.
@@ -61,10 +61,10 @@ development:
 test:
   <<: *default
   database: rails_portfolio_test
-  username: <%= ENV.fetch("PGUSER", "postgres") %>
-  password: <%= ENV.fetch("PGPASSWORD", "") %>
-  host: <%= ENV.fetch("PGHOST", "localhost") %>
-  port: 5432
+  # username: <%= ENV.fetch("PGUSER", "postgres") %>
+  # password: <%= ENV.fetch("PGPASSWORD", "") %>
+  # host: <%= ENV.fetch("PGHOST", "localhost") %>
+  # port: 5432
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
 # ever seen by anyone, they now have access to your database.
@@ -80,8 +80,16 @@ test:
 # URL environment variable explicitly:
 #
 production:
-  url: <%= ENV["DATABASE_URL"] %>
-#
+  <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
+  # adapter: postgresql
+  # encoding: unicode
+  # host: <%= ENV['DATABASE_HOST'] %>
+  # username: <%= ENV['DATABASE_USER'] %>
+  # password: <%= ENV['DATABASE_PASSWORD'] %>
+  # database: <%= ENV['DATABASE_NAME'] %>
+  # pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
 # Read https://guides.rubyonrails.org/configuring.html#configuring-a-database
 # for a full overview on how database connection configuration can be specified.
 #
