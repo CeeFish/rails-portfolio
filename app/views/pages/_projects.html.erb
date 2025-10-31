@@ -3,8 +3,9 @@
     <h2>Projects</h2>
     <div class="row mb-5 justify-content-center">
       <% if @initial_projects.present? %>
-        <% @initial_projects.each do |p| %>
-          <div class="col-md-4 mb-4">
+        <% @initial_projects.each_with_index do |p, idx| %>
+          <% col_class = idx.zero? ? "col-md-9 mb-4" : "col-md-4 mb-4" %>
+          <div class="<%= col_class %>">
             <div class="card h-100">
               <% Array(p["image_urls"]).each_with_index do |img, i| %>
                 <img src="<%= img %>" class="card-img-top" alt="<%= p["name"] %> screenshot <%= i + 1 %>">
