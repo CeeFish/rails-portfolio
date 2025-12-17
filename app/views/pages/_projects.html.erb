@@ -36,7 +36,7 @@
 
 
 <script>
-  fetch("https://web-production-78e56.up.railway.app/projects")
+  fetch("/github-projects")
     .then(response => response.json())
     .then(data => {
       const container = document.getElementById("dynamic-projects-container");
