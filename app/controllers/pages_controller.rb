@@ -1,3 +1,5 @@
+require "httparty"
+
 class PagesController < ApplicationController
   def index
     private_project = {
