@@ -2,4 +2,6 @@ Rails.application.routes.draw do
   root "pages#index"
   # Contact form submission
   post "/contact", to: "pages#submit_contact", as: "contact"
+  # JSON endpoint for dynamic GitHub projects
+  get "/github-projects", to: "pages#projects_json"
 end
