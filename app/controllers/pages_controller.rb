@@ -11,7 +11,7 @@ class PagesController < ApplicationController
     }
     fetched = []
     begin
-      resp = HTTParty.get("#{ENV['PY_API_URL']}/api/projects?limit=3")
+      HTTParty.get("#{ENV['PY_API_URL']}/projects")
       fetched = resp.success? ? resp.parsed_response : []
     rescue => e
       Rails.logger.error "Project fetch failed: #{e.message}"
@@ -56,7 +56,7 @@ class PagesController < ApplicationController
   end
 
   def projects_json
-    resp = HTTParty.get(ENV["PY_API_URL"] + "/api/projects")
+    HTTParty.get("#{ENV['PY_API_URL']}/projects")
     render json: (resp.success? ? resp.parsed_response : []), status: resp.code
   end
 
