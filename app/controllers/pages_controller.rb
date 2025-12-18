@@ -58,7 +58,7 @@ class PagesController < ApplicationController
   end
 
   def projects_json
-    HTTParty.get("#{ENV['PY_API_URL']}/projects")
+    resp = HTTParty.get("#{ENV['PY_API_URL']}/projects")
     render json: (resp.success? ? resp.parsed_response : []), status: resp.code
   end
 
